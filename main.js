@@ -1,7 +1,15 @@
 
-document.getElementById('clickMe').addEventListener('click', function () {
-  var test = document.getElementById('test')
-  test.innerHTML = emojify(test.innerHTML)
+
+var buttons = document.querySelectorAll('button')
+var target = document.querySelector('#target')
+
+function inputHandler(evt) {
+  var shortname = evt.srcElement.innerText
+  target.innerHTML += emojione.toImage(shortname)
+}
+
+;[].forEach.call(buttons, function (button) {
+  button.addEventListener('click', inputHandler)
 })
 
 var emojify = function (value) {
